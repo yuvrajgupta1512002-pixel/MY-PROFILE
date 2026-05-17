@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Akarshit Gupta | Portfolio Showcase</title>
+  <meta name="description"
+    content="Explore Akarshit Gupta's portfolio of premium web design, AI solutions, branding, and e-commerce projects.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E⚡%3C/text%3E%3C/svg%3E">
+</head>
+
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-spinner"></div>
+    <div class="preloader-text">Akarshit Gupta</div>
+  </div>
+
+  <!-- Background Effects -->
+  <div class="bg-grid"></div>
+  <div class="noise-overlay"></div>
+  <div class="cursor-glow"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Akarshit<span>.</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="ai-agent.html">AI Agent</a>
+        <a href="join.html">Community</a>
+        <a href="contact.html" class="nav-cta">Hire Me</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label reveal" style="justify-content:center;">My Portfolio</span>
+      <h1 class="section-title reveal">Featured <span class="gradient-text">Projects</span></h1>
+      <p class="section-subtitle reveal" style="margin:0 auto;">Every project is crafted with care, precision, and a
+        passion for creating exceptional digital experiences.</p>
+    </div>
+  </section>
+
+  <!-- Filter Buttons -->
+  <section style="padding-bottom: 0;">
+    <div class="container">
+      <div class="projects-filter reveal">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="web">Web Design</button>
+        <button class="filter-btn" data-filter="ai">AI Solutions</button>
+        <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" id="projects" style="padding-top:20px;">
+    <div class="container">
+      <div class="projects-grid">
+
+        <!-- Project Equence -->
+        <div class="project-card reveal" data-category="web">
+          <div class="project-card-image">
+            <img src="images/equence-thumbnail.png" alt="Equence Scrollytelling Portfolio">
+            <div class="project-card-overlay">
+              <a href="http://localhost:3000" target="_blank" class="btn btn-primary" style="padding:10px 20px; font-size:0.8rem;">Live Preview</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>Equence Portfolio</h3>
+            <p>A premium scrollytelling portfolio showcasing HTML5 Canvas animations and dynamic user experiences.</p>
+            <div class="project-tags">
+              <span class="project-tag">Next.js</span>
+              <span class="project-tag">Canvas</span>
+              <span class="project-tag">Framer Motion</span>
+            </div>
+            <a href="http://localhost:3000" target="_blank" class="project-link">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Naya Project Placeholder -->
+        <div class="project-card reveal" data-category="web">
+          <div class="project-card-image">
+            <img src="images/project-ai.png" alt="New Awesome Project">
+            <div class="project-card-overlay">
+              <a href="#" class="btn btn-primary" style="padding:10px 20px; font-size:0.8rem;">Live Preview</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>New Awesome Project</h3>
+            <p>A placeholder for your amazing new project. Add your description here to showcase your latest work.</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JS</span>
+            </div>
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="project-card reveal" data-category="web">
+          <div class="project-card-image">
+            <img src="images/project-web.png" alt="Premium Portfolio Website">
+            <div class="project-card-overlay">
+              <a href="#" class="btn btn-primary" style="padding:10px 20px; font-size:0.8rem;">Live Preview</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>Premium Portfolio</h3>
+            <p>A sleek, ultra-modern portfolio website built with glassmorphism design and smooth animations.</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML5</span>
+              <span class="project-tag">CSS3</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card reveal" data-category="ai">
+          <div class="project-card-image">
+            <img src="images/project-ai.png" alt="AI Content Dashboard">
+            <div class="project-card-overlay">
+              <a href="#" class="btn btn-primary" style="padding:10px 20px; font-size:0.8rem;">Live Preview</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>AI Content Dashboard</h3>
+            <p>An intelligent dashboard interface for managing AI-generated content and real-time analytics.</p>
+            <div class="project-tags">
+              <span class="project-tag">AI</span>
+              <span class="project-tag">Dashboard</span>
+              <span class="project-tag">Analytics</span>
+            </div>
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Project 3 - MyStore E-commerce -->
+        <div class="project-card reveal" data-category="ecommerce">
+          <div class="project-card-image">
+            <img src="images/project-ecomm.png" alt="MyStore E-commerce Shop">
+            <div class="project-card-overlay">
+              <a href="projects/ecomm.html" target="_blank" class="btn btn-primary" style="padding:10px 20px; font-size:0.8rem;">Live Preview</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>MyStore – E-commerce</h3>
+            <p>A fully functional e-commerce shop with dynamic product listings, add-to-cart, and checkout powered by vanilla JavaScript.</p>
+            <div class="project-tags">
+              <span class="project-tag">E-commerce</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Responsive</span>
+            </div>
+            <a href="projects/ecomm.html" target="_blank" class="project-link">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card reveal" data-category="web">
+          <div class="project-card-image">
+            <img src="images/project-web.png" alt="Product Landing Page">
+            <div class="project-card-overlay">
+              <a href="#" class="btn btn-primary" style="padding:10px 20px; font-size:0.8rem;">Live Preview</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>Product Landing Page</h3>
+            <p>A high-converting landing page designed for maximum impact with floating device mockups.</p>
+            <div class="project-tags">
+              <span class="project-tag">Landing Page</span>
+              <span class="project-tag">Conversion</span>
+              <span class="project-tag">Animation</span>
+            </div>
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card reveal" data-category="branding">
+          <div class="project-card-image">
+            <img src="images/project-branding.png" alt="Brand Identity Design">
+            <div class="project-card-overlay">
+              <a href="#" class="btn btn-primary" style="padding:10px 20px; font-size:0.8rem;">Live Preview</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>Complete Brand Identity</h3>
+            <p>A full brand identity package including logo design, color palette, and comprehensive style guide.</p>
+            <div class="project-tags">
+              <span class="project-tag">Branding</span>
+              <span class="project-tag">Logo Design</span>
+              <span class="project-tag">Style Guide</span>
+            </div>
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card reveal" data-category="ai">
+          <div class="project-card-image">
+            <img src="images/project-ai.png" alt="AI Chatbot Interface">
+            <div class="project-card-overlay">
+              <a href="#" class="btn btn-primary" style="padding:10px 20px; font-size:0.8rem;">Live Preview</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>AI Chatbot Interface</h3>
+            <p>A beautifully designed AI chatbot interface with natural language processing capabilities.</p>
+            <div class="project-tags">
+              <span class="project-tag">AI</span>
+              <span class="project-tag">Chatbot</span>
+              <span class="project-tag">NLP</span>
+            </div>
+            <a href="#" class="project-link">View Project →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section contact-cta text-center" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="contact-cta-card reveal">
+        <h2>Have a Project in <span class="gradient-text">Mind</span>?</h2>
+        <p>Let's turn your idea into reality. I'm ready to build something amazing for you.</p>
+        <div class="contact-cta-buttons">
+          <a href="contact.html" class="btn btn-primary">
+            <span>Start Your Project</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html" class="nav-logo">Akarshit<span>.</span></a>
+          <p>AI Creator, Web Developer, and Digital Problem Solver. Crafting premium digital experiences that blend
+            creativity with cutting-edge technology.</p>
+          <div class="social-links">
+            <a href=https://www.instagram.com/aakarshit_guptaa_?igsh=MXdkMnp3bXNkM2xnaA==target="_blank" rel="noopener"
+              class="social-link" aria-label="Instagram">📸</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-link"
+              aria-label="LinkedIn">💼</a>
+            <a href="https://github.com" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">🐱</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="social-link" aria-label="Twitter">🐦</a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="projects.html">Projects</a>
+            <a href="ai-agent.html">AI Agent</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <div class="footer-links">
+            <a href="services.html">Website Design</a>
+            <a href="services.html">Landing Pages</a>
+            <a href="services.html">Portfolio Sites</a>
+            <a href="services.html">AI Solutions</a>
+            <a href="services.html">Branding</a>
+          </div>
+        </div>
+        <div>
+          <h4>Get in Touch</h4>
+          <div class="footer-links">
+            <a href="mailto:hello@akarshitgupta.com">hello@akarshitgupta.com</a>
+            <a href="https://wa.me/qr/EAIRDGVI3PO5N1">WhatsApp</a>
+            <a href="contact.html">Contact Form</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Akarshit Gupta. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/qr/EAIRDGVI3PO5N1" target="_blank" rel="noopener" class="whatsapp-float"
+    aria-label="Chat on WhatsApp">💬</a>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- AI Chatbot Widget -->
+  <div class="chatbot-widget" id="chatbot-widget">
+    <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Toggle AI Chat">
+      <span class="chatbot-icon">🤖</span>
+    </button>
+    <div class="chatbot-window" id="chatbot-window">
+      <div class="chatbot-header">
+        <div class="chatbot-header-info">
+          <span class="chatbot-pulse"></span>
+          <h4>Akarshit's AI Assistant</h4>
+        </div>
+        <button class="chatbot-close" id="chatbot-close">&times;</button>
+      </div>
+      <div class="chatbot-messages" id="chatbot-messages">
+        <div class="chat-message bot-message">
+          <p>Hi there! 👋 I'm Akarshit's AI assistant. How can I help you today?</p>
+        </div>
+      </div>
+      <div class="chatbot-input-area">
+        <input type="text" id="chatbot-input" placeholder="Type a message...">
+        <button id="chatbot-send" aria-label="Send message">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+  <script src="3d-effects.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Community — Akarshit Gupta</title>
+    <meta name="description"
+        content="Join Akarshit Gupta's exclusive community and stay updated with latest projects, tips, and opportunities.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E⚡%3C/text%3E%3C/svg%3E">
+    <style>
+        .join-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0;
+        }
+
+        .join-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 28px;
+            padding: 60px;
+            max-width: 550px;
+            margin: 0 auto;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .join-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .join-header .section-label {
+            justify-content: center;
+        }
+
+        .join-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .join-header h1 .gradient-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .join-header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .join-form-group {
+            margin-bottom: 20px;
+        }
+
+        .join-form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .join-form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            border-radius: 14px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition-fast);
+            outline: none;
+        }
+
+        .join-form-group input:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .join-form-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .join-submit {
+            width: 100%;
+            padding: 14px 32px;
+            margin-top: 8px;
+            background: var(--gradient-btn);
+            color: white;
+            border: none;
+            border-radius: var(--btn-radius);
+            font-weight: 600;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-btn);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .join-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.45);
+        }
+
+        .join-submit:active {
+            transform: translateY(0);
+        }
+
+        .join-note {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .join-success {
+            text-align: center;
+            display: none;
+        }
+
+        .join-success.show {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .join-success h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .join-success p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .success-buttons {
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+        }
+
+        .success-buttons a {
+            padding: 12px 24px;
+            border-radius: var(--btn-radius);
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        .success-btn-primary {
+            background: var(--gradient-btn);
+            color: white;
+            box-shadow: var(--shadow-btn);
+        }
+
+        .success-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+        }
+
+        .success-btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-glass);
+        }
+
+        .success-btn-secondary:hover {
+            color: var(--text-primary);
+            border-color: var(--border-glass-hover);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .members-preview {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-glass);
+            text-align: center;
+        }
+
+        .members-count {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+        }
+
+        .members-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .required-asterisk {
+            color: #f87171;
+        }
+
+        @media (max-width: 768px) {
+            .join-card {
+                padding: 36px 24px;
+            }
+
+            .join-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-spinner"></div>
+        <div class="preloader-text">Akarshit Gupta</div>
+    </div>
+
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="noise-overlay"></div>
+    <div class="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">Akarshit<span>.</span></a>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="projects.html">Projects</a>
+                <a href="ai-agent.html">AI Agent</a>
+                <a href="join.html" class="active">Community</a>
+                <a href="contact.html" class="nav-cta">Hire Me</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Join Section -->
+    <section class="join-section">
+        <div class="container">
+            <div class="join-card reveal">
+
+                <!-- Join Form -->
+                <div class="join-form-content">
+                    <div class="join-header">
+                        <span class="section-label" style="justify-content:center;">👥 Community</span>
+                        <h1>Join the <span class="gradient-text">Community</span></h1>
+                        <p>Stay updated with latest projects, insights, and exclusive opportunities. Our community grows
+                            daily with creators and innovators like you.</p>
+                    </div>
+
+                    <form id="join-form" action="join_submit.php" method="POST">
+                                                                        <div class="join-form-group">
+                            <label for="join-name">Full Name <span class="required-asterisk">*</span></label>
+                            <input type="text" id="join-name" name="name" placeholder="John Doe" required minlength="2" maxlength="255">
+                                                    </div>
+
+                        <div class="join-form-group">
+                            <label for="join-email">Email Address <span class="required-asterisk">*</span></label>
+                            <input type="email" id="join-email" name="email" placeholder="john@example.com" required maxlength="255">
+                                                    </div>
+
+                        <button type="submit" class="join-submit">
+                            <span>Join the Community</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 5v14M5 12h14"></path>
+                            </svg>
+                        </button>
+
+                        <p class="join-note">🔒 Your email is safe and secure. We'll never spam you.</p>
+                    </form>
+
+                    <!-- Success Message -->
+                    <div class="join-success" id="join-success" style="display:none;">
+                        <div class="success-icon">🎉</div>
+                        <h2>Welcome to the Community!</h2>
+                        <p>Thank you for joining. You'll now receive updates about new projects, insights, and exclusive
+                            opportunities.</p>
+
+                        <div class="success-buttons">
+                            <a href="index.html" class="success-btn-primary">
+                                <span>Back to Home</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Members Preview -->
+                <div class="members-preview">
+                    <div class="members-count" id="live-members-count">0</div>
+                    <p class="members-text">community members</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top:1px solid var(--border-glass);padding-top:24px;">
+                <p>© 2026 Akarshit Gupta. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/qr/EAIRDGVI3PO5N1" target="_blank" rel="noopener" class="whatsapp-float"
+        aria-label="Chat on WhatsApp">💬</a>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+    <script src="main.js"></script>
+    <script>
+        // Update live member count
+        // Update live member count from real database
+        function updateMemberCount() {
+            const countElement = document.getElementById('live-members-count');
+            
+            fetch('api.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        countElement.textContent = data.count;
+                        localStorage.setItem('ag_member_count', data.count);
+                    } else {
+                        // Fallback to local storage if API fails
+                        let count = parseInt(localStorage.getItem('ag_member_count') || '142');
+                        countElement.textContent = count;
+                    }
+                })
+                .catch(err => {
+                    console.error('Error fetching member count:', err);
+                    let count = parseInt(localStorage.getItem('ag_member_count') || '142');
+                    countElement.textContent = count;
+                });
+        }
+
+        // Handle URL parameters for success/error states
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+
+        if (status === 'success') {
+            document.getElementById('join-form').style.display = 'none';
+            document.getElementById('join-success').style.display = 'block';
+            
+            // Increment visual counter
+            let count = parseInt(localStorage.getItem('ag_member_count') || '142');
+            localStorage.setItem('ag_member_count', count + 1);
+            
+            history.replaceState(null, '', 'join.html');
+            updateMemberCount();
+        } else if (status === 'error') {
+            const msg = urlParams.get('msg') || 'unknown';
+            const messages = {
+                missing_fields: 'Please fill in all fields.',
+                invalid_email: 'Please enter a valid email address.',
+                already_joined: 'You are already in the community!',
+                db_error: 'Something went wrong. Please try again later.'
+            };
+            const errorText = messages[msg] || 'Something went wrong. Please try again.';
+            alert('⚠️ ' + errorText);
+            history.replaceState(null, '', 'join.html');
+            updateMemberCount();
+        } else {
+            updateMemberCount();
+        }
+
+        // Add loading state to the join form
+        document.getElementById('join-form')?.addEventListener('submit', function() {
+            const btn = this.querySelector('.join-submit');
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<span>Joining...</span>';
+            }
+        });
+    </script>
+  <script src="3d-effects.js"></script>
+</body>
+
+</html>
