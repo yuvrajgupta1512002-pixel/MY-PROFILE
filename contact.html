@@ -95,7 +95,9 @@
 
         <div class="contact-form-wrapper reveal-right">
           <h3>Send Me a Message</h3>
-          <form id="contact-form" action="submit.php" method="POST">
+          <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            <p style="display:none"><label>Don't fill this: <input name="bot-field"></label></p>
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Full Name</label>
@@ -399,7 +401,6 @@
             <a href="mailto:hello@akarshitgupta.com">hello@akarshitgupta.com</a>
             <a href="https://wa.me/qr/EAIRDGVI3PO5N1">WhatsApp</a>
             <a href="contact.html">Contact Form</a>
-            <a href="database.php">&#x1F4CA; View Submissions</a>
           </div>
         </div>
       </div>
@@ -446,24 +447,33 @@
 
   <script src="main.js"></script>
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const status = urlParams.get('status');
-    if (status === 'success') {
-      document.getElementById('contact-form').style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-      history.replaceState(null, '', 'contact.html');
-    } else if (status === 'error') {
-      const msg = urlParams.get('msg') || 'unknown';
-      const messages = { db_connect:'Database connection failed.', missing_fields:'Please fill in all required fields.', invalid_email:'Please enter a valid email address.', prepare_failed:'Server error. Please try again.', insert_failed:'Could not save your message.' };
-      const errorDiv = document.createElement('div');
-      errorDiv.style.cssText = 'background:rgba(255,80,80,0.15);border:1px solid rgba(255,80,80,0.4);border-radius:12px;padding:16px 20px;color:#ff6b6b;margin-bottom:20px;font-size:0.9rem;';
-      errorDiv.textContent = '&#9888; ' + (messages[msg] || 'Something went wrong.');
-      document.getElementById('contact-form').prepend(errorDiv);
-      history.replaceState(null, '', 'contact.html');
-    }
-    document.getElementById('contact-form')?.addEventListener('submit', function() {
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
       const btn = this.querySelector('.form-submit');
       if (btn) { btn.disabled = true; btn.innerHTML = '<span>Sending...</span>'; }
+
+      try {
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(this)).toString()
+        });
+        if (res.ok) {
+          document.getElementById('contact-form').style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        if (btn) { btn.disabled = false; btn.innerHTML = '<span>Send Message</span><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>'; }
+        const errorDiv = document.createElement('div');
+        errorDiv.style.cssText = 'background:rgba(255,80,80,0.15);border:1px solid rgba(255,80,80,0.4);border-radius:12px;padding:16px 20px;color:#ff6b6b;margin-bottom:20px;font-size:0.9rem;';
+        errorDiv.textContent = '⚠️ Something went wrong. Please try again or reach out via WhatsApp.';
+        const existing = document.querySelector('.contact-form-error');
+        if (existing) existing.remove();
+        errorDiv.classList.add('contact-form-error');
+        document.getElementById('contact-form').prepend(errorDiv);
+      }
     });
   </script>
   <script src="3d-effects.js"></script>

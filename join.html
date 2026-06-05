@@ -284,7 +284,9 @@
                             daily with creators and innovators like you.</p>
                     </div>
 
-                    <form id="join-form" action="join_submit.php" method="POST">
+                    <form id="join-form" name="join" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="join">
+                        <p style="display:none"><label>Don't fill this: <input name="bot-field"></label></p>
                                                                         <div class="join-form-group">
                             <label for="join-name">Full Name <span class="required-asterisk">*</span></label>
                             <input type="text" id="join-name" name="name" placeholder="John Doe" required minlength="2" maxlength="255">
@@ -348,66 +350,48 @@
 
     <script src="main.js"></script>
     <script>
-        // Update live member count
-        // Update live member count from real database
         function updateMemberCount() {
             const countElement = document.getElementById('live-members-count');
-            
-            fetch('api.php')
-                .then(response => response.json())
+            fetch('/api/member-count')
+                .then(r => r.json())
                 .then(data => {
                     if (data.success) {
                         countElement.textContent = data.count;
                         localStorage.setItem('ag_member_count', data.count);
                     } else {
-                        // Fallback to local storage if API fails
-                        let count = parseInt(localStorage.getItem('ag_member_count') || '142');
-                        countElement.textContent = count;
+                        countElement.textContent = parseInt(localStorage.getItem('ag_member_count') || '142');
                     }
                 })
-                .catch(err => {
-                    console.error('Error fetching member count:', err);
-                    let count = parseInt(localStorage.getItem('ag_member_count') || '142');
-                    countElement.textContent = count;
+                .catch(() => {
+                    countElement.textContent = parseInt(localStorage.getItem('ag_member_count') || '142');
                 });
         }
 
-        // Handle URL parameters for success/error states
-        const urlParams = new URLSearchParams(window.location.search);
-        const status = urlParams.get('status');
+        updateMemberCount();
 
-        if (status === 'success') {
-            document.getElementById('join-form').style.display = 'none';
-            document.getElementById('join-success').style.display = 'block';
-            
-            // Increment visual counter
-            let count = parseInt(localStorage.getItem('ag_member_count') || '142');
-            localStorage.setItem('ag_member_count', count + 1);
-            
-            history.replaceState(null, '', 'join.html');
-            updateMemberCount();
-        } else if (status === 'error') {
-            const msg = urlParams.get('msg') || 'unknown';
-            const messages = {
-                missing_fields: 'Please fill in all fields.',
-                invalid_email: 'Please enter a valid email address.',
-                already_joined: 'You are already in the community!',
-                db_error: 'Something went wrong. Please try again later.'
-            };
-            const errorText = messages[msg] || 'Something went wrong. Please try again.';
-            alert('⚠️ ' + errorText);
-            history.replaceState(null, '', 'join.html');
-            updateMemberCount();
-        } else {
-            updateMemberCount();
-        }
-
-        // Add loading state to the join form
-        document.getElementById('join-form')?.addEventListener('submit', function() {
+        document.getElementById('join-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
             const btn = this.querySelector('.join-submit');
-            if (btn) {
-                btn.disabled = true;
-                btn.innerHTML = '<span>Joining...</span>';
+            if (btn) { btn.disabled = true; btn.innerHTML = '<span>Joining...</span>'; }
+
+            try {
+                const res = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(new FormData(this)).toString()
+                });
+                if (res.ok) {
+                    document.getElementById('join-form').style.display = 'none';
+                    document.getElementById('join-success').style.display = 'block';
+                    let count = parseInt(localStorage.getItem('ag_member_count') || '142');
+                    localStorage.setItem('ag_member_count', count + 1);
+                    updateMemberCount();
+                } else {
+                    throw new Error('Server error');
+                }
+            } catch {
+                if (btn) { btn.disabled = false; btn.innerHTML = '<span>Join the Community</span><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>'; }
+                alert('⚠️ Something went wrong. Please try again.');
             }
         });
     </script>
